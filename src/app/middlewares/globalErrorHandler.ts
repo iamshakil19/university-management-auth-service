@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
 
-import { ErrorRequestHandler, NextFunction } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { ZodError } from 'zod';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
