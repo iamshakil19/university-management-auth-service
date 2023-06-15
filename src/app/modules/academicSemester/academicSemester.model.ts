@@ -6,8 +6,14 @@ import {
   academicSemesterMonths,
   academicSemesterTitles,
 } from './academicSemester.constant';
-import { IAcademicSemester } from './academicSemester.interface';
-const academicSemesterSchema = new Schema<IAcademicSemester>(
+import {
+  AcademicSemesterModel,
+  IAcademicSemester,
+} from './academicSemester.interface';
+const academicSemesterSchema = new Schema<
+  IAcademicSemester,
+  AcademicSemesterModel
+>(
   {
     title: {
       type: String,
