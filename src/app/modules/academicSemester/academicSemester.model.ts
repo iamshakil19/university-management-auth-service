@@ -10,7 +10,8 @@ import {
   AcademicSemesterModel,
   IAcademicSemester,
 } from './academicSemester.interface';
-const academicSemesterSchema = new Schema<
+
+const AcademicSemesterSchema = new Schema<
   IAcademicSemester,
   AcademicSemesterModel
 >(
@@ -49,7 +50,7 @@ const academicSemesterSchema = new Schema<
 );
 
 // Handling same year and same semester issue
-academicSemesterSchema.pre('save', async function (next) {
+AcademicSemesterSchema.pre('save', async function (next) {
   const isExist = await AcademicSemester.findOne({
     title: this.title,
     year: this.year,
@@ -66,5 +67,5 @@ academicSemesterSchema.pre('save', async function (next) {
 
 export const AcademicSemester = model<IAcademicSemester>(
   'AcademicSemester',
-  academicSemesterSchema
+  AcademicSemesterSchema
 );
