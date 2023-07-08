@@ -84,9 +84,7 @@ const updateStudent = async (
   if (!isExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Student not found');
   }
-
   const { name, guardian, localGuardian, ...studentData } = payload;
-
   const updatedStudentData: Partial<IStudent> = { ...studentData };
 
   if (name && Object.keys(name).length > 0) {
