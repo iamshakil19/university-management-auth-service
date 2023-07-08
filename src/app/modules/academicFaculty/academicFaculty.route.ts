@@ -19,7 +19,6 @@ router.get(
   auth(
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.FACULTY,
-    ENUM_USER_ROLE.STUDENT,
     ENUM_USER_ROLE.SUPER_ADMIN
   ),
   AcademicFacultyController.getSingleFaculty
@@ -38,7 +37,7 @@ router.patch(
 
 router.delete(
   '/:id',
-  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN),
   AcademicFacultyController.deleteFaculty
 );
 
