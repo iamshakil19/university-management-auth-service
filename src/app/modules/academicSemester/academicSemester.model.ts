@@ -40,6 +40,10 @@ const AcademicSemesterSchema = new Schema<
       required: true,
       enum: academicSemesterMonths,
     },
+    syncId: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

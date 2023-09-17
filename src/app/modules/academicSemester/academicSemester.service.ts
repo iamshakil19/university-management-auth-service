@@ -10,6 +10,7 @@ import {
 } from './academicSemester.constant';
 import {
   IAcademicSemester,
+  IAcademicSemesterCreatedEvent,
   IAcademicSemesterFilters,
 } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';
@@ -20,7 +21,6 @@ const createSemester = async (
   if (academicSemesterTitleCodeMapper[payload.title] !== payload.code) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid semester code');
   }
-
   const result = await AcademicSemester.create(payload);
   return result;
 };
@@ -112,10 +112,31 @@ const deleteSemester = async (
   return result;
 };
 
+const createSemesterFromEvent = async (
+  e: IAcademicSemesterCreatedEvent
+): Promise<void> => {
+  await AcademicSemester.create({
+    title: e.title,
+    year: e.year,
+    code: e.code,
+    startMonth: e.startMonth,
+    endMonth: e.endMonth,
+    syncId: e.id,
+  });
+};
+
+const updateSemesterFromEvent = async (
+  e: IAcademicSemesterCreatedEvent
+): Promise<void> => {
+  await AcademicSemester.findOneAndUpdate({ syncId: e.id }, e);
+};
+
 export const AcademicSemesterService = {
   createSemester,
   getAllSemesters,
   getSingleSemester,
   updateSemester,
   deleteSemester,
+  createSemesterFromEvent,
+  updateSemesterFromEvent,
 };

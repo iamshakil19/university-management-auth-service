@@ -24,10 +24,20 @@ export interface IAcademicSemester {
   code: IAcademicSemesterCodes;
   startMonth: IAcademicSemesterMonths;
   endMonth: IAcademicSemesterMonths;
+  syncId: string;
 }
 
 export type AcademicSemesterModel = Model<IAcademicSemester>;
 
 export interface IAcademicSemesterFilters {
   searchTerm?: string;
+}
+
+export interface IAcademicSemesterCreatedEvent {
+  title: string;
+  year: string;
+  code: string;
+  startMonth: string;
+  endMonth: string;
+  id: string;
 }
