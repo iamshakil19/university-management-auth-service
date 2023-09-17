@@ -13,7 +13,6 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
   const result = await AcademicSemesterService.createSemester(
     academicSemesterData
   );
-
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -25,12 +24,10 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, academicSemesterFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
-
   const result = await AcademicSemesterService.getAllSemesters(
     filters,
     paginationOptions
   );
-
   sendResponse<IAcademicSemester[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -42,9 +39,7 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
 
 const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-
   const result = await AcademicSemesterService.getSingleSemester(id);
-
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -56,9 +51,7 @@ const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
 const updateSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const updatedData = req.body;
-
   const result = await AcademicSemesterService.updateSemester(id, updatedData);
-
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -69,9 +62,7 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
 
 const deleteSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-
   const result = await AcademicSemesterService.deleteSemester(id);
-
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
     success: true,
