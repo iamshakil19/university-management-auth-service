@@ -107,7 +107,7 @@ const deleteAdmin = async (id: string): Promise<IAdmin | null> => {
   const session = await mongoose.startSession();
 
   try {
-    session.startTransaction();
+    await session.startTransaction();
     //delete student first
     const student = await Admin.findOneAndDelete({ id }, { session });
     if (!student) {
@@ -115,12 +115,12 @@ const deleteAdmin = async (id: string): Promise<IAdmin | null> => {
     }
     //delete user
     await User.deleteOne({ id });
-    session.commitTransaction();
-    session.endSession();
+    await session.commitTransaction();
+    await session.endSession();
 
     return student;
   } catch (error) {
-    session.abortTransaction();
+    await session.abortTransaction();
     throw error;
   }
 };

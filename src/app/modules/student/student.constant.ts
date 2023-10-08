@@ -19,3 +19,5 @@ export const studentFilterableFields = [
   'gender',
   'emergencyContactNo',
 ];
+
+export const EVENT_STUDENT_UPDATED = 'student-updated';

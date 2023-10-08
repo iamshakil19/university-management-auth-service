@@ -22,7 +22,7 @@ async function main() {
     logger.info(`🆗 Database are connected`);
 
     server = app.listen(config.port, () => {
-      logger.info(`University app listening on port ${config.port}`);
+      logger.info(`✅ App listening on port ${config.port}`);
     });
   } catch (error) {
     errorLogger.error(`❌ Failed to connect database: ${error}`);
